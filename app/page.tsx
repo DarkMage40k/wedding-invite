@@ -168,7 +168,7 @@ export default function Home() {
            </p>
 
            <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl md:text-8xl font-normal tracking-tight leading-tight">
-             Nadeem Akhtar Choudhury
+             Capt. Nadeem Akhtar Choudhury
              <span className="block text-[#D4AF37] text-xl sm:text-2xl md:text-4xl font-[family-name:var(--font-playfair)] italic my-3 sm:my-4 md:my-6">
                &amp;
              </span>
