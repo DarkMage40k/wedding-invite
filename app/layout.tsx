@@ -42,7 +42,10 @@ export default function RootLayout({
      lang="en"
      className={`${playfair.variable} ${inter.variable} ${amiri.variable} h-full antialiased`}
    >
-     <body className="h-full bg-[#FAFAF7] text-[#1A3626]">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    </head>
+     <body className="h-full bg-[#FAFAF7] text-[#1A3626] env-safe">
        {children}
      </body>
    </html>

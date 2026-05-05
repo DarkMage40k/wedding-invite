@@ -23,22 +23,22 @@ function GoldLine() {
  );
 }
 const slide =
- "h-[100dvh] w-full snap-start flex flex-col items-center justify-center px-8 text-center";
+ "h-[100dvh] w-full snap-start flex flex-col items-center justify-center px-4 sm:px-8 text-center";
 
-const cornerClass = "w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 opacity-60";
+const cornerClass = "w-12 h-12 sm:w-18 sm:h-18 md:w-20 md:h-20 opacity-60";
 
 
 function Corners() {
  return (
    <>
      {/* eslint-disable-next-line @next/next/no-img-element */}
-     <img src="/corner.svg" alt="" className={`absolute top-6 left-6 sm:top-8 sm:left-8 ${cornerClass}`} />
+     <img src="/corner.svg" alt="" className={`absolute top-4 left-4 sm:top-8 sm:left-8 ${cornerClass}`} />
      {/* eslint-disable-next-line @next/next/no-img-element */}
-     <img src="/corner.svg" alt="" className={`absolute top-6 right-6 sm:top-8 sm:right-8 ${cornerClass} -scale-x-100`} />
+     <img src="/corner.svg" alt="" className={`absolute top-4 right-4 sm:top-8 sm:right-8 ${cornerClass} -scale-x-100`} />
      {/* eslint-disable-next-line @next/next/no-img-element */}
-     <img src="/corner.svg" alt="" className={`absolute bottom-6 left-6 sm:bottom-8 sm:left-8 ${cornerClass} -scale-y-100`} />
+     <img src="/corner.svg" alt="" className={`absolute bottom-4 left-4 sm:bottom-8 sm:left-8 ${cornerClass} -scale-y-100`} />
      {/* eslint-disable-next-line @next/next/no-img-element */}
-     <img src="/corner.svg" alt="" className={`absolute bottom-6 right-6 sm:bottom-8 sm:right-8 ${cornerClass} scale-[-1]`} />
+     <img src="/corner.svg" alt="" className={`absolute bottom-4 right-4 sm:bottom-8 sm:right-8 ${cornerClass} scale-[-1]`} />
    </>
  );
 }
@@ -91,21 +91,21 @@ function Countdown() {
  ];
 
  return (
-   <div className="flex flex-col items-center mt-6 sm:mt-10">
+   <div className="flex flex-col items-center mt-4 sm:mt-10">
      {phase && time ? (
        <>
-         <p className="font-[family-name:var(--font-inter)] text-sm sm:text-base tracking-[0.35em] uppercase text-[#D4AF37] mt-2 sm:mt-4">
+         <p className="font-[family-name:var(--font-inter)] text-xs sm:text-base tracking-[0.35em] uppercase text-[#D4AF37] mt-1 sm:mt-4">
            {phase.label}
          </p>
 
 
-         <div className="flex items-start gap-6 sm:gap-10 mt-4 sm:mt-6">
+         <div className="flex items-start gap-4 sm:gap-10 mt-3 sm:mt-6">
            {units.map(({ value, label }) => (
              <div key={label} className="flex flex-col items-center">
-               <span className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl md:text-7xl font-normal text-[#1A3626] tabular-nums leading-none">
+               <span className="font-[family-name:var(--font-playfair)] text-4xl sm:text-6xl md:text-7xl font-normal text-[#1A3626] tabular-nums leading-none">
                  {String(value).padStart(2, "0")}
                </span>
-               <span className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-widest text-[#D4AF37] uppercase mt-2">
+               <span className="font-[family-name:var(--font-inter)] text-[0.6rem] sm:text-sm tracking-widest text-[#D4AF37] uppercase mt-1.5">
                  {label}
                </span>
              </div>
@@ -163,23 +163,23 @@ export default function Home() {
        {/* ── 1. Hero ── */}
        <section className={`${slide} relative overflow-hidden`}>
          {/* Green border frame between corners and image */}
-         <div className="absolute top-12 left-12 right-12 bottom-12 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
+         <div className="absolute top-8 left-8 right-8 bottom-8 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
          {/* Background image — fits inside corner ornaments */}
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/hero-bg.png" alt="" className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-9rem)] h-[calc(100%-9rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
+         <img src="/hero-bg.png" alt="" className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-5.5rem)] h-[calc(100%-9rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
          {/* Ivory tint overlay */}
-         <div className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
+         <div className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
 
 
          {/* Corner ornaments */}
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute top-12 left-12 sm:top-14 sm:left-14 md:top-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125" />
+         <img src="/corner.svg" alt="" className="absolute top-8 left-8 sm:top-14 sm:left-14 md:top-16 md:left-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125" />
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute top-12 right-12 sm:top-14 sm:right-14 md:top-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-x-100" />
+         <img src="/corner.svg" alt="" className="absolute top-8 right-8 sm:top-14 sm:right-14 md:top-16 md:right-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-x-100" />
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute bottom-12 left-12 sm:bottom-14 sm:left-14 md:bottom-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-y-100" />
+         <img src="/corner.svg" alt="" className="absolute bottom-8 left-8 sm:bottom-14 sm:left-14 md:bottom-16 md:left-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-y-100" />
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute bottom-12 right-12 sm:bottom-14 sm:right-14 md:bottom-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 scale-[-1]" />
+         <img src="/corner.svg" alt="" className="absolute bottom-8 right-8 sm:bottom-14 sm:right-14 md:bottom-16 md:right-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 scale-[-1]" />
 
 
          <motion.div
@@ -190,7 +190,7 @@ export default function Home() {
            className="relative z-10 flex flex-col items-center"
          >
            <p
-             className="font-[family-name:var(--font-amiri)] text-[#1A3626] text-3xl sm:text-4xl md:text-5xl mb-10 sm:mb-16"
+             className="font-[family-name:var(--font-amiri)] text-[#1A3626] text-2xl sm:text-4xl md:text-5xl mb-6 sm:mb-16"
              dir="rtl"
              lang="ar"
            >
@@ -198,21 +198,21 @@ export default function Home() {
            </p>
 
 
-           <h1 className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl md:text-8xl font-normal tracking-tight leading-tight">
+           <h1 className="font-[family-name:var(--font-playfair)] text-[2.5rem] leading-[1.15] sm:text-6xl md:text-8xl font-normal tracking-tight leading-tight">
              Nadeem Akhtar Choudhury
-             <span className="block text-[#1A3626] text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-playfair)] italic my-3 sm:my-4 md:my-6">
+             <span className="block text-[#1A3626] text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-playfair)] italic my-2 sm:my-4 md:my-6">
                &amp;
              </span>
              Sadaf Shabaz Khan
            </h1>
 
-           <div className="mt-10 sm:mt-16 md:mt-20">
+           <div className="mt-6 sm:mt-16 md:mt-20">
              {/* Horizontal ornament divider */}
              {/* eslint-disable-next-line @next/next/no-img-element */}
              <img
                src="/ornament.svg?v=2"
                alt=""
-               className="w-64 sm:w-80 md:w-96 mx-auto"
+               className="w-48 sm:w-80 md:w-96 mx-auto"
              />
            </div>
          </motion.div>
@@ -230,7 +230,7 @@ export default function Home() {
            className="flex flex-col items-center"
          >
            {/* Heart frame */}
-           <div className="relative w-[92vw] h-[60vh] sm:w-[70vw] sm:h-[67vh] md:w-[50vw] md:h-[72vh] max-w-xl mx-auto">
+           <div className="relative w-[85vw] h-[50vh] sm:w-[70vw] sm:h-[67vh] md:w-[50vw] md:h-[72vh] max-w-xl mx-auto">
              {/* eslint-disable-next-line @next/next/no-img-element */}
              <img
                src="/heart.svg"
@@ -259,7 +259,7 @@ export default function Home() {
 
 
            <div
-             className="font-[family-name:var(--font-amiri)] text-3xl sm:text-3xl md:text-4xl mt-8 sm:mt-16 text-[#1A3626] px-4 sm:px-2 space-y-6 sm:space-y-6"
+             className="font-[family-name:var(--font-amiri)] text-[1.7rem] leading-[1.6] sm:text-3xl md:text-4xl mt-6 sm:mt-16 text-[#1A3626] px-2 sm:px-2 space-y-4 sm:space-y-6"
              dir="rtl"
              lang="ar"
            >
@@ -269,7 +269,7 @@ export default function Home() {
            </div>
 
 
-           <p className="font-[family-name:var(--font-playfair)] text-lg sm:text-lg md:text-xl italic text-[#1A3626]/70 mt-6 sm:mt-10 leading-relaxed max-w-lg mx-auto px-4 sm:px-2">
+           <p className="font-[family-name:var(--font-playfair)] text-base sm:text-lg md:text-xl italic text-[#1A3626]/70 mt-4 sm:mt-10 leading-relaxed max-w-lg mx-auto px-2 sm:px-2">
              &ldquo;And among His signs is that He created for you mates from
              among yourselves, that you may dwell in tranquility with them, and
              He has put love and mercy between your hearts. Verily in that are
@@ -277,7 +277,7 @@ export default function Home() {
            </p>
 
 
-           <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-[0.2em] uppercase text-[#D4AF37] mt-6 sm:mt-8">
+           <p className="font-[family-name:var(--font-inter)] text-[0.65rem] sm:text-sm tracking-[0.2em] uppercase text-[#D4AF37] mt-4 sm:mt-8">
              Surah Ar-Rum &middot; 30:21
            </p>
          </motion.div>
@@ -294,20 +294,20 @@ export default function Home() {
            variants={fadeUp}
            className="w-full max-w-4xl"
          >
-           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-20 md:gap-0">
+           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-10 sm:gap-20 md:gap-0">
              {/* Nikah */}
              <div className="flex flex-col items-center text-center md:pr-10">
                <GoldLine />
 
-               <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-[0.35em] uppercase text-[#D4AF37] mt-8">
+               <p className="font-[family-name:var(--font-inter)] text-[0.65rem] sm:text-sm tracking-[0.35em] uppercase text-[#D4AF37] mt-4 sm:mt-8">
                  The Ceremony
                </p>
 
-               <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl md:text-5xl font-normal mt-3">
+               <h2 className="font-[family-name:var(--font-playfair)] text-2xl sm:text-4xl md:text-5xl font-normal mt-2 sm:mt-3">
                  Nikah
                </h2>
 
-               <div className="mt-8 space-y-1">
+               <div className="mt4 sm:mt-8 space-y-0.5 sm:space-y-1">
                  <p className="font-[family-name:var(--font-inter)] text-sm sm:text-base text-[#1A3626]/70">
                    Friday, 15th May 2026
                  </p>
@@ -319,12 +319,12 @@ export default function Home() {
                  </p>
                </div>
 
-               <div className="mt-6 flex flex-col items-center">
-                 <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#D4AF37]/50" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+               <div className="mt-3 sm:mt-6 flex flex-col items-center">
+                 <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5 text-[#D4AF37]/50" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" />
                    <circle cx="12" cy="9" r="2.5" />
                  </svg>
-                 <p className="font-[family-name:var(--font-playfair)] text-base sm:text-lg text-[#1A3626] mt-2">
+                 <p className="font-[family-name:var(--font-playfair)] text-sm sm:text-lg text-[#1A3626] mt-1.5 sm:mt-2">
                    The Mount Riviera Hotel
                  </p>
                  <a
@@ -347,15 +347,15 @@ export default function Home() {
              <div className="flex flex-col items-center text-center md:pl-10">
                <GoldLine />
 
-               <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-[0.35em] uppercase text-[#D4AF37] mt-8">
+               <p className="font-[family-name:var(--font-inter)] text-[0.65rem] sm:text-sm tracking-[0.35em] uppercase text-[#D4AF37] mt-4 sm:mt-8">
                  The Reception
                </p>
 
-               <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl md:text-5xl font-normal mt-3">
+               <h2 className="font-[family-name:var(--font-playfair)] text-2xl sm:text-4xl md:text-5xl font-normal mt-2 sm:mt-3">
                  Walima
                </h2>
 
-               <div className="mt-8 space-y-1">
+               <div className="mt-4 sm:mt-8 space-y-0.5 sm:space-y-1">
                  <p className="font-[family-name:var(--font-inter)] text-sm sm:text-base text-[#1A3626]/70">
                    Sunday, 17th May 2026
                  </p>
@@ -367,12 +367,12 @@ export default function Home() {
                  </p>
                </div>
 
-               <div className="mt-6 flex flex-col items-center">
-                 <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#D4AF37]/50" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+               <div className="mt-3 sm:mt-6 flex flex-col items-center">
+                 <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5 text-[#D4AF37]/50" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" />
                    <circle cx="12" cy="9" r="2.5" />
                  </svg>
-                 <p className="font-[family-name:var(--font-playfair)] text-base sm:text-lg text-[#1A3626] mt-2">
+                 <p className="font-[family-name:var(--font-playfair)] text-sm sm:text-lg text-[#1A3626] mt-1.5 sm:mt-2">
                    Palmgrove Officers Institute
                  </p>
                  <a
@@ -392,23 +392,23 @@ export default function Home() {
        {/* ── 4. Footer ── */}
        <section className={`${slide} relative overflow-hidden`}>
          {/* Green border frame */}
-         <div className="absolute top-12 left-12 right-12 bottom-12 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
+         <div className="absolute top-8 left-8 right-8 bottom-8 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
          {/* Background image */}
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/nikah.jpeg" alt="" className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-9rem)] h-[calc(100%-9rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
+         <img src="/nikah.jpeg" alt="" className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-5.5rem)] h-[calc(100%-5.5rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
          {/* Ivory tint overlay */}
-         <div className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
+         <div className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
 
 
          {/* Corner ornaments */}
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute top-12 left-12 sm:top-14 sm:left-14 md:top-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125" />
+         <img src="/corner.svg" alt="" className="absolute top-8 left-8 sm:top-14 sm:left-14 md:top-16 md:left-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125" />
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute top-12 right-12 sm:top-14 sm:right-14 md:top-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-x-100" />
+         <img src="/corner.svg" alt="" className="absolute top-8 right-8 sm:top-14 sm:right-14 md:top-16 md:right-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-x-100" />
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute bottom-12 left-12 sm:bottom-14 sm:left-14 md:bottom-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-y-100" />
+         <img src="/corner.svg" alt="" className="absolute bottom-8 left-8 sm:bottom-14 sm:left-14 md:bottom-16 md:left-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-y-100" />
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/corner.svg" alt="" className="absolute bottom-12 right-12 sm:bottom-14 sm:right-14 md:bottom-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 scale-[-1]" />
+         <img src="/corner.svg" alt="" className="absolute bottom-8 right-8 sm:bottom-14 sm:right-14 md:bottom-16 md:right-16 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 scale-[-1]" />
 
 
          <motion.div
@@ -422,18 +422,18 @@ export default function Home() {
            <img
              src="/ornament.svg?v=2"
              alt=""
-             className="w-64 sm:w-80 md:w-96 mb-6 sm:mb-8"
+             className="w-48 sm:w-80 md:w-96 mb-4 sm:mb-8"
            />
 
 
-           <p className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl md:text-4xl italic text-[#1A3626] leading-relaxed">
+           <p className="font-[family-name:var(--font-playfair)] text-xl sm:text-3xl md:text-4xl italic text-[#1A3626] leading-relaxed">
              We look forward to celebrating
              <br />
              with you.
            </p>
 
 
-           <p className="font-[family-name:var(--font-playfair)] text-base sm:text-lg md:text-xl tracking-[0.2em] uppercase text-[#1A3626]/80 italic mt-8 sm:mt-12">
+           <p className="font-[family-name:var(--font-playfair)] text-sm sm:text-lg md:text-xl tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[#1A3626]/80 italic mt-5 sm:mt-12">
              Nadeem &amp; Sadaf
            </p>
 
@@ -441,7 +441,7 @@ export default function Home() {
            <img
              src="/ornament.svg?v=2"
              alt=""
-             className="w-64 sm:w-80 md:w-96 mt-6 sm:mt-8"
+             className="w-48 sm:w-80 md:w-96 mt-4 sm:mt-8"
            />
          </motion.div>
        </section>
