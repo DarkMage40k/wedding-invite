@@ -25,6 +25,24 @@ function GoldLine() {
 const slide =
  "h-[100dvh] w-full snap-start flex flex-col items-center justify-center px-8 text-center";
 
+const cornerClass = "w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 opacity-60";
+
+
+function Corners() {
+ return (
+   <>
+     {/* eslint-disable-next-line @next/next/no-img-element */}
+     <img src="/corner.svg" alt="" className={`absolute top-6 left-6 sm:top-8 sm:left-8 ${cornerClass}`} />
+     {/* eslint-disable-next-line @next/next/no-img-element */}
+     <img src="/corner.svg" alt="" className={`absolute top-6 right-6 sm:top-8 sm:right-8 ${cornerClass} -scale-x-100`} />
+     {/* eslint-disable-next-line @next/next/no-img-element */}
+     <img src="/corner.svg" alt="" className={`absolute bottom-6 left-6 sm:bottom-8 sm:left-8 ${cornerClass} -scale-y-100`} />
+     {/* eslint-disable-next-line @next/next/no-img-element */}
+     <img src="/corner.svg" alt="" className={`absolute bottom-6 right-6 sm:bottom-8 sm:right-8 ${cornerClass} scale-[-1]`} />
+   </>
+ );
+}
+
 function getTimeLeft(target: number) {
  const diff = Math.max(0, target - Date.now());
  return {
@@ -73,44 +91,36 @@ function Countdown() {
  ];
 
  return (
-   <section className={slide}>
-     <motion.div
-       initial="hidden"
-       whileInView="visible"
-       viewport={{ once: false, amount: 0.6 }}
-       variants={fadeUp}
-       className="flex flex-col items-center"
-     >
-       <GoldLine />
-
-       {phase && time ? (
-         <>
-           <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-[0.35em] uppercase text-[#D4AF37] mt-12 sm:mt-16">
-             {phase.label}
-           </p>
-
-           <div className="flex items-start gap-6 sm:gap-10 mt-10 sm:mt-14">
-             {units.map(({ value, label }) => (
-               <div key={label} className="flex flex-col items-center">
-                 <span className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-normal text-[#1A3626] tabular-nums leading-none">
-                   {String(value).padStart(2, "0")}
-                 </span>
-                 <span className="font-[family-name:var(--font-inter)] text-xs tracking-widest text-[#D4AF37] uppercase mt-3">
-                   {label}
-                 </span>
-               </div>
-             ))}
-           </div>
-         </>
-       ) : (
-         <p className="font-[family-name:var(--font-playfair)] text-lg sm:text-xl italic text-[#1A3626]/70 mt-12 sm:mt-16 leading-relaxed">
-           The celebrations have concluded.
+   <div className="flex flex-col items-center mt-6 sm:mt-10">
+     {phase && time ? (
+       <>
+         <p className="font-[family-name:var(--font-inter)] text-sm sm:text-base tracking-[0.35em] uppercase text-[#D4AF37] mt-2 sm:mt-4">
+           {phase.label}
          </p>
-       )}
-     </motion.div>
-   </section>
+
+
+         <div className="flex items-start gap-6 sm:gap-10 mt-4 sm:mt-6">
+           {units.map(({ value, label }) => (
+             <div key={label} className="flex flex-col items-center">
+               <span className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl md:text-7xl font-normal text-[#1A3626] tabular-nums leading-none">
+                 {String(value).padStart(2, "0")}
+               </span>
+               <span className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-widest text-[#D4AF37] uppercase mt-2">
+                 {label}
+               </span>
+             </div>
+           ))}
+         </div>
+       </>
+     ) : (
+       <p className="font-[family-name:var(--font-playfair)] text-base sm:text-lg italic text-[#1A3626]/70 mt-4 leading-relaxed">
+         The celebrations have concluded.
+       </p>
+     )}
+   </div>
  );
 }
+
 export default function Home() {
  const [showSplash, setShowSplash] = useState(true);
 
@@ -138,7 +148,7 @@ export default function Home() {
              initial={{ opacity: 0, scale: 0.95 }}
              animate={{ opacity: 1, scale: 1 }}
              transition={{ duration: 1.5, ease: "easeOut" }}
-             className="font-[family-name:var(--font-amiri)] text-[#D4AF37] text-3xl sm:text-5xl md:text-6xl select-none px-6"
+             className="font-[family-name:var(--font-amiri)] text-[#D4AF37] text-5xl sm:text-5xl md:text-6xl select-none px-6"
              dir="rtl"
              lang="ar"
            >
@@ -151,25 +161,46 @@ export default function Home() {
      {/* ─── Snap-scroll container ─── */}
      <main className={`h-[100dvh] snap-y snap-mandatory scrollbar-hide ${showSplash ? "overflow-hidden" : "overflow-y-scroll"}`}>
        {/* ── 1. Hero ── */}
-       <section className={slide}>
+       <section className={`${slide} relative overflow-hidden`}>
+         {/* Green border frame between corners and image */}
+         <div className="absolute top-12 left-12 right-12 bottom-12 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
+         {/* Background image — fits inside corner ornaments */}
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/hero-bg.png" alt="" className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-9rem)] h-[calc(100%-9rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
+         {/* Ivory tint overlay */}
+         <div className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
+
+
+         {/* Corner ornaments */}
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute top-12 left-12 sm:top-14 sm:left-14 md:top-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125" />
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute top-12 right-12 sm:top-14 sm:right-14 md:top-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-x-100" />
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute bottom-12 left-12 sm:bottom-14 sm:left-14 md:bottom-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-y-100" />
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute bottom-12 right-12 sm:bottom-14 sm:right-14 md:bottom-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 scale-[-1]" />
+
+
          <motion.div
            initial="hidden"
            whileInView="visible"
            viewport={{ once: false, amount: 0.6 }}
            variants={fadeUp}
-           className="flex flex-col items-center"
+           className="relative z-10 flex flex-col items-center"
          >
            <p
-             className="font-[family-name:var(--font-amiri)] text-[#D4AF37] text-2xl sm:text-3xl md:text-4xl mb-10 sm:mb-16"
+             className="font-[family-name:var(--font-amiri)] text-[#1A3626] text-3xl sm:text-4xl md:text-5xl mb-10 sm:mb-16"
              dir="rtl"
              lang="ar"
            >
              بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ
            </p>
 
-           <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl md:text-8xl font-normal tracking-tight leading-tight">
+
+           <h1 className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl md:text-8xl font-normal tracking-tight leading-tight">
              Nadeem Akhtar Choudhury
-             <span className="block text-[#D4AF37] text-xl sm:text-2xl md:text-4xl font-[family-name:var(--font-playfair)] italic my-3 sm:my-4 md:my-6">
+             <span className="block text-[#1A3626] text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-playfair)] italic my-3 sm:my-4 md:my-6">
                &amp;
              </span>
              Sadaf Shabaz Khan
@@ -179,19 +210,44 @@ export default function Home() {
              {/* Horizontal ornament divider */}
              {/* eslint-disable-next-line @next/next/no-img-element */}
              <img
-               src="/ornament.svg"
+               src="/ornament.svg?v=2"
                alt=""
-               className="w-56 sm:w-72 md:w-96 mx-auto"
+               className="w-64 sm:w-80 md:w-96 mx-auto"
              />
            </div>
          </motion.div>
        </section>
 
-       {/* ── 2. Countdown Timer ── */}
-       <Countdown />
+
+       {/* ── 2. Countdown ── */}
+       <section className={`${slide} relative`}>
+         <Corners />
+         <motion.div
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: false, amount: 0.4 }}
+           variants={fadeUp}
+           className="flex flex-col items-center"
+         >
+           {/* Heart frame */}
+           <div className="relative w-[92vw] h-[60vh] sm:w-[70vw] sm:h-[67vh] md:w-[50vw] md:h-[72vh] max-w-xl mx-auto">
+             {/* eslint-disable-next-line @next/next/no-img-element */}
+             <img
+               src="/heart.svg"
+               alt=""
+               className="absolute inset-0 w-full h-full object-contain pointer-events-none z-10 drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]"
+             />
+           </div>
+
+
+           <Countdown />
+         </motion.div>
+       </section>
+
 
        {/* ── 3. Quran Verse ── */}
-       <section className={slide}>
+       <section className={`${slide} relative`}>
+         <Corners />
          <motion.div
            initial="hidden"
            whileInView="visible"
@@ -201,31 +257,36 @@ export default function Home() {
          >
            <GoldLine />
 
-           <p
-             className="font-[family-name:var(--font-amiri)] text-2xl sm:text-3xl md:text-4xl leading-relaxed mt-10 sm:mt-16 text-[#1A3626]"
+
+           <div
+             className="font-[family-name:var(--font-amiri)] text-3xl sm:text-3xl md:text-4xl mt-8 sm:mt-16 text-[#1A3626] px-4 sm:px-2 space-y-6 sm:space-y-6"
              dir="rtl"
              lang="ar"
            >
-             وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
-             لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-             ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
-           </p>
+             <p className="relative isolate">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا</p>
+             <p className="relative isolate">لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+             <p className="relative isolate">ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
+           </div>
 
-           <p className="font-[family-name:var(--font-playfair)] text-base sm:text-lg md:text-xl italic text-[#1A3626]/70 mt-8 sm:mt-10 leading-relaxed max-w-lg mx-auto">
+
+           <p className="font-[family-name:var(--font-playfair)] text-lg sm:text-lg md:text-xl italic text-[#1A3626]/70 mt-6 sm:mt-10 leading-relaxed max-w-lg mx-auto px-4 sm:px-2">
              &ldquo;And among His signs is that He created for you mates from
              among yourselves, that you may dwell in tranquility with them, and
              He has put love and mercy between your hearts. Verily in that are
              signs for those who reflect.&rdquo;
            </p>
 
-           <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-[0.2em] uppercase text-[#D4AF37] mt-8">
+
+           <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-[0.2em] uppercase text-[#D4AF37] mt-6 sm:mt-8">
              Surah Ar-Rum &middot; 30:21
            </p>
          </motion.div>
        </section>
 
+
        {/* ── 3. Events ── */}
-       <section className={slide}>
+       <section className={`${slide} relative`}>
+         <Corners />
          <motion.div
            initial="hidden"
            whileInView="visible"
@@ -270,7 +331,7 @@ export default function Home() {
                    href="https://www.google.com/maps/search/?api=1&query=The+Mount+Riviera+Hotel+Triplicane+Chennai+600005"
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="inline-block mt-3 font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#D4AF37] border border-[#D4AF37]/30 rounded-full px-4 py-1.5 transition-colors hover:bg-[#D4AF37]/10"
+                   className="inline-block mt-3 font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#D4AF37] bg-[#1A3626]/80 border border-[#1A3626]/80 rounded-full px-4 py-1.5 transition-colors hover:bg-[#1A3626]/90"
                  >
                    Get Directions
                  </a>
@@ -318,7 +379,7 @@ export default function Home() {
                    href="https://www.google.com/maps/search/?api=1&query=Palmgrove+Officers+Institute+Island+Grounds+Chennai+600009"
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="inline-block mt-3 font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#D4AF37] border border-[#D4AF37]/30 rounded-full px-4 py-1.5 transition-colors hover:bg-[#D4AF37]/10"
+                   className="inline-block mt-3 font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#D4AF37] bg-[#1A3626]/80 border border-[#1A3626]/80 rounded-full px-4 py-1.5 transition-colors hover:bg-[#1A3626]/90"
                  >
                    Get Directions
                  </a>
@@ -329,24 +390,59 @@ export default function Home() {
        </section>
 
        {/* ── 4. Footer ── */}
-       <section className={slide}>
+       <section className={`${slide} relative overflow-hidden`}>
+         {/* Green border frame */}
+         <div className="absolute top-12 left-12 right-12 bottom-12 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
+         {/* Background image */}
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/nikah.jpeg" alt="" className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-9rem)] h-[calc(100%-9rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
+         {/* Ivory tint overlay */}
+         <div className="absolute top-[4.5rem] left-[4.5rem] right-[4.5rem] bottom-[4.5rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
+
+
+         {/* Corner ornaments */}
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute top-12 left-12 sm:top-14 sm:left-14 md:top-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125" />
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute top-12 right-12 sm:top-14 sm:right-14 md:top-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-x-100" />
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute bottom-12 left-12 sm:bottom-14 sm:left-14 md:bottom-16 md:left-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 -scale-y-100" />
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img src="/corner.svg" alt="" className="absolute bottom-12 right-12 sm:bottom-14 sm:right-14 md:bottom-16 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 brightness-125 scale-[-1]" />
+
+
          <motion.div
            initial="hidden"
            whileInView="visible"
            viewport={{ once: false, amount: 0.6 }}
            variants={fadeUp}
+           className="relative z-10 flex flex-col items-center justify-center text-center"
          >
-           <GoldLine />
+           {/* eslint-disable-next-line @next/next/no-img-element */}
+           <img
+             src="/ornament.svg?v=2"
+             alt=""
+             className="w-64 sm:w-80 md:w-96 mb-6 sm:mb-8"
+           />
 
-           <p className="font-[family-name:var(--font-playfair)] text-xl sm:text-2xl md:text-3xl italic text-[#1A3626]/80 mt-16 leading-relaxed">
+
+           <p className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl md:text-4xl italic text-[#1A3626] leading-relaxed">
              We look forward to celebrating
              <br />
              with you.
            </p>
 
-           <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm tracking-[0.2em] uppercase text-[#D4AF37]/60 mt-12">
+
+           <p className="font-[family-name:var(--font-playfair)] text-base sm:text-lg md:text-xl tracking-[0.2em] uppercase text-[#1A3626]/80 italic mt-8 sm:mt-12">
              Nadeem &amp; Sadaf
            </p>
+
+           {/* eslint-disable-next-line @next/next/no-img-element */}
+           <img
+             src="/ornament.svg?v=2"
+             alt=""
+             className="w-64 sm:w-80 md:w-96 mt-6 sm:mt-8"
+           />
          </motion.div>
        </section>
      </main>
