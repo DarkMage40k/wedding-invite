@@ -162,13 +162,11 @@ export default function Home() {
      <main className={`h-[100dvh] snap-y snap-mandatory scrollbar-hide ${showSplash ? "overflow-hidden" : "overflow-y-scroll"}`}>
        {/* ── 1. Hero ── */}
        <section className={`${slide} relative overflow-hidden`}>
-         {/* Green border frame between corners and image */}
-         <div className="absolute top-8 left-8 right-8 bottom-8 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
-         {/* Background image — fits inside corner ornaments */}
+         {/* Background image*/}
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/hero-bg.png" alt="" className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-5.5rem)] h-[calc(100%-9rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
+         <img src="/hero-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
          {/* Ivory tint overlay */}
-         <div className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
+         <div className="absolute inset-0 bg-[#FAFAF7]/60" />
 
 
          {/* Corner ornaments */}
@@ -391,13 +389,11 @@ export default function Home() {
 
        {/* ── 4. Footer ── */}
        <section className={`${slide} relative overflow-hidden`}>
-         {/* Green border frame */}
-         <div className="absolute top-8 left-8 right-8 bottom-8 sm:top-14 sm:left-14 sm:right-14 sm:bottom-14 md:top-16 md:left-16 md:right-16 md:bottom-16 bg-[#1A3626]" />
          {/* Background image */}
          {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img src="/nikah.jpeg" alt="" className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] w-[calc(100%-5.5rem)] h-[calc(100%-5.5rem)] sm:w-[calc(100%-10rem)] sm:h-[calc(100%-10rem)] md:w-[calc(100%-11rem)] md:h-[calc(100%-11rem)] object-cover" />
+         <img src="/nikah.jpeg" alt="" className="absolute inset-0 w-full h-full object-cover" />
          {/* Ivory tint overlay */}
-         <div className="absolute top-[2.75rem] left-[2.75rem] right-[2.75rem] bottom-[2.75rem] sm:top-20 sm:left-20 sm:right-20 sm:bottom-20 md:top-[5.5rem] md:left-[5.5rem] md:right-[5.5rem] md:bottom-[5.5rem] bg-[#FAFAF7]/60" />
+         <div className="absolute inset-0 bg-[#FAFAF7]/60" />
 
 
          {/* Corner ornaments */}
